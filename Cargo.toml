@@ -1,5 +1,5 @@
 [package]
-name = "task_queue"
+name = "task-queue"
 version = "0.1.0"
 edition = "2018"
 authors = ["Sergey Frantsishkov <mgistrser@gmail.com>"]
