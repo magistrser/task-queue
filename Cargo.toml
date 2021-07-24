@@ -1,6 +1,6 @@
 [package]
 name = "taskqueue"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2018"
 authors = ["Sergey Frantsishkov <mgistrser@gmail.com>"]
 description = "Parallel execution of the task queue with the ability to add new tasks inside the running tasks"
@@ -8,7 +8,7 @@ repository = "https://github.com/magistrser/task-queue"
 license = "MIT"
 keywords = ["concurrent", "parallel", "pool", "threadpool", "taskqueue"]
 readme = "readme.md"
-categories = ["Concurrency", "Data structures",]
+categories = ["concurrency", "data-structures",]
 
 [dependencies]
 fehler = "1.0.0"
