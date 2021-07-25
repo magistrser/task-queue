@@ -24,3 +24,10 @@ pub trait RunTask {
 }
 
 pub type Task = Box<dyn RunTask + Send>;
+
+// // https://github.com/rust-lang/rust/issues/29625>
+// impl<T: FnOnce(usize, TaskReceiver) -> TaskControlCommand> RunTask for T {
+//     fn run(self: Box<Self>, id: WorkerId, task_receiver: TaskReceiver) -> TaskControlCommand {
+//         self.call_once((id, task_receiver))
+//     }
+// }

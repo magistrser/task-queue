@@ -1,9 +1,7 @@
 use fehler::throws;
 use ntest::timeout;
 
-use task_queue::{
-    Error, QueueType, RunTask, TaskControlCommand, TaskQueue, TaskReceiver, WorkerId,
-};
+use taskqueue::{Error, QueueType, RunTask, TaskControlCommand, TaskQueue, TaskReceiver, WorkerId};
 
 struct TimeoutTask {
     timeout_sec: u64,
@@ -168,4 +166,15 @@ fn test_task_queue_inner_abort() {
         .ok();
     task_queue.add_task(Box::new(AbortTask::new(2))).ok();
     task_queue.abort().ok();
+}
+
+#[cfg(feature = "fn_traits")]
+#[test]
+#[throws]
+fn test_closure_as_task() {
+    let task_queue = TaskQueue::new(2, QueueType::Stack);
+    task_queue.add_task(Box::new(|_id, _task_receiver| {
+        println!("[D] Closure task called.");
+        TaskControlCommand::Continue
+    }));
 }
